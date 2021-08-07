@@ -1,5 +1,5 @@
-from quart import Quart
+from flask import Flask
 
-app = Quart(__name__)
+app = Flask(__name__)
 
 from . import routes

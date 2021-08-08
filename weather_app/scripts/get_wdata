@@ -1,7 +1,7 @@
 import requests 
 import json
 
-def get_data(city):
+def get_wdata(city):
     api_key = 'c46121cc1ced83e6bc7281bcb5592ca0'
     url = f'http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={api_key}&units=metric'
     data = requests.get(url).json()

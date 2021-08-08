@@ -4,11 +4,9 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-python-weather = "*"
-quart = "*"
+flask = "*"
 requests = "*"
 gunicorn = "*"
-hypercorn = "*"
 
 [dev-packages]
 

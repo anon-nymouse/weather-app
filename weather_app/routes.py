@@ -1,5 +1,7 @@
+import requests
 from . import app
 from flask import render_template
+from flask import request
 from weather_app.scripts.get_data import get_location, get_data
 
 
@@ -10,3 +12,10 @@ def index():
     city = get_location()
     data = get_data(city)
     return render_template('index.html', data=data)
+
+@app.route('/search', methods=['GET','POST'])
+def search():
+    city = request.args.get('city')
+    url = f'http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={api_key}&units=metric'
+    data = requests.get(url).json()
+    return data

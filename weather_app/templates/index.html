@@ -8,6 +8,11 @@
 </head>
 <body>
     <h1>Weather Right Now</h1>
+    <h2>Search Weather by City Name</h2>
+    <form action="/search" method="POST">
+        <input type="text" name="city">
+        <button type="submit">submit</button>
+    </form>
       <p>City: {{ data.City }} </p> 
       <p>Temparature: {{ data.temp }} </p> 
       <p>Feels Like: {{ data.feels_like }} </p>

@@ -15,5 +15,12 @@ def index():
 @app.route('/search', methods=['GET','POST'])
 def search():
     city = request.args.get('city')
+<<<<<<< Updated upstream
     data = get_data(city)
     return data
+=======
+    # url = f'http://api.openweathermap.org/data/2.5/forecast?q={city}&appid={api_key}&units=metric'
+    # data = requests.get(url).json()
+    data = get_data(city)
+    return render_template('results.html', data=data)
+>>>>>>> Stashed changes

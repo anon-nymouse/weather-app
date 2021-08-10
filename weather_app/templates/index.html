@@ -5,110 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Right Now</title>
-
-    <script src="http://maps.google.com/maps/api/js?key=AIzaSyBzCmodG9F5LLV76bQVdZUHAjnpIHi3svY"></script>
-
 </head>
 <body>
     <h1>Weather Right Now</h1>
     <h2>Search Weather by City Name</h2>
-    <form action="/search" method="POST">
+    <form name="test" action="/search" method="post">
         <input type="text" name="city">
         <button type="submit">submit</button>
     </form>
-    <!-- <script>
-        if('geolocation' in navigator) {
+    <script>
+          if('geolocation' in navigator) {
             /* geolocation is available */
-            console.log('Geoloaction is avaiable');
+            console.log("Geolocation is avaiable")
             navigator.geolocation.getCurrentPosition((position) => {
-             /*   latitude = position.coords.latitude;
-                longitude = position.coords.longitude;
-                console.log(displayLocation(latitude, longitude)); */
-                displayLocation(position.coords.latitude, position.coords.longitude);
-              });
+              const lat = position.coords.latitude;
+              const lon = position.coords.longitude;
+              console.log(lat, lon);
+              //const data = fetch('127.0.0.1/weather?lat$(lat)&lon$(lon)');
+              //console.log(data);
+            });
           } else {
             /* geolocation IS NOT available */
+            console.log('Geolocation is not avaiable')
           }
-          function displayLocation(latitude,longitude){
-            var geocoder;
-            geocoder = new google.maps.Geocoder();
-            var latlng = new google.maps.LatLng(latitude, longitude);
-      
-            geocoder.geocode(
-                {'latLng': latlng}, 
-                function(results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        if (results[0]) {
-                            var add= results[0].formatted_address ;
-                            var  value=add.split(",");
-      
-                            count=value.length;
-                            country=value[count-1];
-                            state=value[count-2];
-                            city=value[count-3];
-                            console.log(city);
-                        }
-                        else  {
-                            console.log("address not found");
-                        }
-                    }
-                    else {
-                        console.log("Geocoder failed due to: " + status);
-                    }
-                }
-            );
-      }
-    </script> -->
-    <script>
-        var latutude = 25.0533981;
-        var longitude = 88.7521339;
-        function displayLocation(latitude,longitude){
-          var request = new XMLHttpRequest();
-  
-          var method = 'GET';
-          var url = 'http://maps.googleapis.com/maps/api/geocode/json?latlng='+latitude+','+longitude+'&sensor=true';
-          var async = true;
-  
-          request.open(method, url, async);
-          request.onreadystatechange = function(){
-            if(request.readyState == 4 && request.status == 200){
-              var data = JSON.parse(request.responseText);
-              var address = data.results[0];
-              document.write(address.formatted_address);
-            }
-          };
-          request.send();
-        };
-  
-        var successCallback = function(position){
-          var x = position.coords.latitude;
-          var y = position.coords.longitude;
-          displayLocation(x,y);
-        };
-  
-        var errorCallback = function(error){
-          var errorMessage = 'Unknown error';
-          switch(error.code) {
-            case 1:
-              errorMessage = 'Permission denied';
-              break;
-            case 2:
-              errorMessage = 'Position unavailable';
-              break;
-            case 3:
-              errorMessage = 'Timeout';
-              break;
-          }
-          document.write(errorMessage);
-        };
-  
-        var options = {
-          enableHighAccuracy: true,
-          timeout: 1000,
-          maximumAge: 0
-        };
-  
-        navigator.geolocation.getCurrentPosition(successCallback,errorCallback,options);
-      </script>
+    </script>
 </body>
 </html>

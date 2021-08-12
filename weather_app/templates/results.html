@@ -8,15 +8,15 @@
 </head>
 <body>
     <h1>Weather Data for City: {{ city }} </h1>
-    <br> 
-    {% for data in wdata %}
-        <p> Time: {{ data.dt_txt }} </p>
-        <p> Temparature: {{ data.temp }} </p>
-        <p> Feels Like: {{ data.feels_like }} </p>
-        <p> Minimum Temparature: {{ data.temp_min }} </p>
-        <p> Maximum Temparature: {{ data.temp_min }} </p>
-        <p> Weather: {{ data.w }} </p>
-        <p> Description: {{ data.w0 }} </p><br><br><br>
+    <br>
+    {% for i in range(8) %} 
+        <p> Time: {{ wdata[i].dt_txt }} </p>
+        <p> Temparature: {{ wdata[i].temp }} </p>
+        <p> Feels Like: {{ wdata[i].feels_like }} </p>
+        <p> Minimum Temparature: {{ wdata[i].temp_min }} </p>
+        <p> Maximum Temparature: {{ wdata[i].temp_min }} </p>
+        <p> Weather: {{ wdata[i].w }} </p>
+        <p> Description: {{ wdata[i].w0 }} </p><br><br><br>
     {% endfor %}
 </body>
 </html>

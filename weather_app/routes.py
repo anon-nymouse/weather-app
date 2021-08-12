@@ -1,6 +1,8 @@
+from datetime import date
 import json
 from flask.helpers import url_for
 import requests
+from requests.api import get
 from . import app
 from flask import render_template
 from flask import request, redirect, url_for
@@ -20,6 +22,11 @@ def search():
         wdata = get_data(city)
         return render_template('results.html', city=city, wdata=wdata)
     return redirect(url_for('index'))
+
+@app.route('/full_forcast/<city>')
+def full_forcast(city):
+    wdata = get_data(city)
+    return render_template('full.html', wdata=wdata, city=city)
 
 @app.route('/get_weather', methods=['GET', 'POST'])
 def get_weather():

@@ -7,10 +7,16 @@
     <title>Document</title>
 </head>
 <body>
-      <p>City: {{ city }} </p> 
-      <p> Temparature: {{ data.temp }} </p>
-      <p> Feels Like: {{ data.feels_like }} </p>
-      <p> Minimum Temparature: {{ data.temp_min }} </p>
-      <p> Maximum Temparature: {{ data.temp_min }} </p>
+    <h1>Weather Data for City: {{ city }} </h1>
+    <br> 
+    {% for data in wdata %}
+        <p> Time: {{ data.dt_txt }} </p>
+        <p> Temparature: {{ data.temp }} </p>
+        <p> Feels Like: {{ data.feels_like }} </p>
+        <p> Minimum Temparature: {{ data.temp_min }} </p>
+        <p> Maximum Temparature: {{ data.temp_min }} </p>
+        <p> Weather: {{ data.w }} </p>
+        <p> Description: {{ data.w0 }} </p><br><br><br>
+    {% endfor %}
 </body>
 </html>

@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Right Now</title>
+    <script src="{{ url_for('static', filename='main.js') }}"></script>
 </head>
 <body>
     <h1>Weather Right Now</h1>
@@ -13,21 +14,8 @@
         <input type="text" name="city">
         <button type="submit">submit</button>
     </form>
-    <script>
-          if('geolocation' in navigator) {
-            /* geolocation is available */
-            console.log("Geolocation is avaiable")
-            navigator.geolocation.getCurrentPosition((position) => {
-              const lat = position.coords.latitude;
-              const lon = position.coords.longitude;
-              console.log(lat, lon);
-              //const data = fetch('127.0.0.1/weather?lat$(lat)&lon$(lon)');
-              //console.log(data);
-            });
-          } else {
-            /* geolocation IS NOT available */
-            console.log('Geolocation is not avaiable')
-          }
+    <script type="text/javascript">
+      geolocate();
     </script>
 </body>
 </html>

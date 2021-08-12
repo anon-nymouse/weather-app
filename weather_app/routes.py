@@ -1,4 +1,4 @@
-import re
+import json
 from flask.helpers import url_for
 import requests
 from . import app
@@ -11,20 +11,22 @@ api_key = 'c46121cc1ced83e6bc7281bcb5592ca0'
 @app.route('/')
 @app.route('/index')
 def index():
-    #city = get_location()
-    #data = get_data(city)
     return render_template('index.html')
 
 @app.route('/search', methods=['GET','POST'])
 def search():
     if request.method == 'POST':
         city = request.form.get('city')
-        data = get_data(city)
-        return render_template('results.html', city=city, data=data)
+        wdata = get_data(city)
+        return render_template('results.html', city=city, wdata=wdata)
     return redirect(url_for('index'))
 
 @app.route('/get_weather', methods=['GET', 'POST'])
 def get_weather():
-    lat = request.args.get('lat')
-    lon = request.args.get('lon')
-    return render_template('res.html', lat=lat, lon=lon)
+    if request.method == 'POST':
+        lat = request.args.get('lat')
+        lon = request.args.get('lon')
+        data = {'lat': lat, 'lon': lon}
+        return data
+    else:
+        return redirect(url_for('index'))

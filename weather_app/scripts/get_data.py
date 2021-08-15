@@ -33,7 +33,7 @@ def get_data(city):
             weather.append(weather_data)
         return weather
     except:
-        weather = "City Not Found"
+        weather = None
     return weather
 
 city = 'patnitola'

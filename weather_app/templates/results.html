@@ -9,15 +9,15 @@
 <body>
     <h1>Weather Data for City: {{ city }} </h1>
     <br>
-    {% for i in range(8) %} 
-        <p> Time: {{ wdata[i].dt_txt }} </p>
-        <p> Temparature: {{ wdata[i].temp }} </p>
-        <p> Feels Like: {{ wdata[i].feels_like }} </p>
-        <p> Minimum Temparature: {{ wdata[i].temp_min }} </p>
-        <p> Maximum Temparature: {{ wdata[i].temp_min }} </p>
-        <p> Weather: {{ wdata[i].w }} </p>
-        <p> Description: {{ wdata[i].w0 }} </p><br><br><br>
-    {% endfor %}
-    <li><a href="http://127.0.0.1:5000/full_forcast/{{ city }}">See More</a></li>
+        {% for i in range(8) %} 
+            <p> Time: {{ wdata[i].dt_txt }} </p>
+            <p> Temparature: {{ wdata[i].temp }} </p>
+            <p> Feels Like: {{ wdata[i].feels_like }} </p>
+            <p> Minimum Temparature: {{ wdata[i].temp_min }} </p>
+            <p> Maximum Temparature: {{ wdata[i].temp_min }} </p>
+            <p> Weather: {{ wdata[i].w }} </p>
+            <p> Description: {{ wdata[i].w0 }} </p><br><br><br>
+        {% endfor %}
+        <li><a href="http://127.0.0.1:5000/full_forcast/{{ city }}">See More</a></li>
 </body>
 </html>

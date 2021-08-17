@@ -7,7 +7,7 @@ from requests.api import get
 from . import app
 from flask import render_template
 from flask import request, redirect, url_for, jsonify, make_response
-from weather_app.scripts.get_data import get_location, get_data
+from weather_app.scripts.get_data import get_data, get_data_from_lat_lon
 
 api_key = 'c46121cc1ced83e6bc7281bcb5592ca0'
 
@@ -37,11 +37,14 @@ def get_weather():
     if request.method == 'POST':
         req = request.get_json()
         print(req)
-        lat = req['lon']
-        lon = req['lat']
-        data = geocoder.google([lat, lon], method='reverse')
+        lat = req['lat']
+        lon = req['lon']
+        # data = geocoder.google([lat, lon], method='reverse')
+        data1 = requests.get(f'https://api.bigdatacloud.net/data/reverse-geocode-client?latitude={lat}&longitude={lon}&localityLanguage=en')
+        data = get_data_from_lat_lon(lat, lon)
         print('I have got a requests!', data)
-        res = make_response(jsonify(data), 200)
+        # res = make_response(jsonify(data), 200)
+        res = make_response(jsonify(data))
         return res
     else:
         return redirect(url_for('index'))

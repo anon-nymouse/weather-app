@@ -31,9 +31,26 @@ async function get_wdata(lat, lon) {
     }
     const response = await fetch('/get_weather?', options);
     json = await response.json()
-    let latitude = json.lat;
-    let longitude = json.lon;
-    document.getElementById('lat').innerText = latitude;
-    document.getElementById('lon').innerText = longitude;
-    console.log(latitude, longitude);
+
+    let latt = json.latt;
+    let lonn = json.lonn;
+    let temp = json.temp;
+    let feels_like = json.feels_like;
+    let humidity = json.humidity;
+    let clouds = json.clouds;
+    let weather = json.w;
+    let des = json.w0;
+
+
+    document.getElementById('lat').innerHTML = latt;
+    document.getElementById('lon').innerHTML = lonn;
+    document.getElementById('tmp').innerText = temp;
+    document.getElementById('fls').innerText = feels_like;
+    document.getElementById('cls').innerHTML = clouds;
+    document.getElementById('hum').innerHTML = humidity;
+    document.getElementById('weather').innerHTML = weather;
+    document.getElementById('des').innerHTML = des;
+    document.getElementById('rain').innerHTML = rain;
+
+    // console.log(json);
   }

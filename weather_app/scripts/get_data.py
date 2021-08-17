@@ -36,6 +36,34 @@ def get_data(city):
         weather = None
     return weather
 
-city = 'patnitola'
-data = get_data('london')
-print(data)
+def get_data_from_lat_lon(lat, lon):
+    api_key = 'c46121cc1ced83e6bc7281bcb5592ca0'
+    url = f'https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={api_key}&units=metric'
+    data = requests.get(url).json()
+    latt = data['lat']
+    lonn = data['lon']
+    temp =  data['current']['temp']
+    feels_like = data['current']['feels_like']
+    humidiy = data['current']['humidity']
+    clouds = data['current']['clouds']            
+    w = data['current']['weather'][0]['main']
+    w0 = data['current']['weather'][0]['description']
+
+    weather_data = {
+        'url': url,
+        'latt': latt,
+        'lonn': lonn,
+        'temp' : temp,
+        'feels_like': feels_like,
+        'humidity': humidiy,
+        'clouds': clouds,
+        'w': w,
+        'w0': w0,
+        }
+    return weather_data
+
+
+
+
+qdata = get_data_from_lat_lon(25.0513469, 88.7622938)
+print(qdata)
